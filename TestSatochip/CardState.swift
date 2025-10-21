@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import CoreNFC
 import SatochipSwift
 import CryptoSwift
@@ -69,18 +70,20 @@ class CardState: ObservableObject {
         let parser = SatocardParser()
         
         do {
-            var (rapdu, cardType) = try cmdSet.selectApplet(cardType: CardType.anycard)
+            // var (rapdu, cardType) = try cmdSet.selectApplet(cardType: CardType.anycard)
+            var (rapdu, cardType) = try cmdSet.selectApplet(cardType: CardType.satochip)    // Just select Satochip applet
+            log.info("cardType: \(cardType)", tag: "CardState.onConnection")
             let statusApdu = try cmdSet.cardGetStatus()
             cardStatus = try CardStatus(rapdu: statusApdu)
             log.info("cardStatus: \(cardStatus)", tag: "CardState.onConnection")
-            
+          
             switch (cardType) {
             case .satodime:
                 testSatodime()
             case .seedkeeper:
                 try testSeedkeeper()
             case .satochip:
-                testSatochip()
+                try testSatochip()
             default:
                 log.warning("Unexpected cardType: \(cardType)", tag: "CardState.onConnection")
             }
@@ -325,7 +328,8 @@ class CardState: ObservableObject {
             let entropyFromUser = Array(entropyObject.secretBytes[1...entropy.count]) // first byte is entropy-size
             try checkEqual(entropyFromUser, entropy, tag: "Function: \(#function), line: \(#line)")
             // test entropy derivation: Secret is the 'size' first bytes of sha512(entropy)
-            let entropyHash = Array(entropyObject.getSha512FromSecret()[0..<size])
+            let entropyRaw = Array(entropyObject.secretBytes[1..<entropyObject.secretBytes.count])
+            let entropyHash = Array(entropyRaw.sha512()[0..<size])
             try checkEqual(entropyHash, Array(secretObject.secretBytes[1..<secretObject.secretBytes.count]), tag: "Function: \(#function), line: \(#line)")
             
             // derive secrets from master password: Derived_data is the 64bytes HmacSha512 of Salt (used as key) and Master_Password (used as message)
@@ -333,7 +337,8 @@ class CardState: ObservableObject {
             let salt = try randomBytes(count: size)
             let (_, derivedSecretObject) = try cmdSet.seedkeeperDeriveMasterPassword(salt: salt,
                                                                                      sid: secretHeader.sid)
-            let swDerivation = secretObject.getHmacSha512(salt: salt)
+            let secretRaw = Array(secretObject.secretBytes[1..<secretObject.secretBytes.count])
+            let swDerivation = try HMAC(key: salt, variant: .sha512).authenticate(secretRaw)
             let hwDerivation = derivedSecretObject.secret
             try checkEqual(swDerivation, hwDerivation, tag: "Function: \(#function), line: \(#line)")
             
@@ -993,9 +998,52 @@ class CardState: ObservableObject {
     //todo: test_memory_passwords
     
     // MARK: SATOCHIP
-    public func testSatochip(){
+    public func testSatochip() throws {
         let log = LoggerService.shared
         log.info("Start Satochip tests", tag: "CardState.testSatochip")
+
+        let pinString = "qqqq"
+        let pinBytes = Array("qqqq".utf8)
+        // let wrongPinBytes = Array("0000".utf8)
+        // var rapdu = APDUResponse(sw1: 0x00, sw2: 0x00, data: [])
+        
+        // applet version
+        // let appletVersion = cardStatus.protocolVersion
+        
+        // check setup status
+        // let setupDone = cardStatus.setupDone
+        // if (!setupDone){
+        //     do {
+        //         rapdu = try cmdSet.cardSetup(pin_tries0: 5, pin0: pinBytes)
+        //     } catch let error {
+        //         log.warning("Error: \(error)", tag:"CardState.testSatochip")
+        //     }
+        // }
+        
+        // ensure secure channel before sensitive operations
+        if cardStatus.needsSecureChannel && !cmdSet.isSecureChannelOpen {
+            do {
+                _ = try cmdSet.cardInitiateSecureChannel()
+                log.info("Secure channel established", tag: "CardState.testSatochip")
+            } catch let error {
+                log.error("Failed to establish secure channel: \(error)", tag: "CardState.testSatochip")
+            }
+        }
+
+        // // verify PIN
+        // log.info("verify PIN", tag: "CardState.testSatochip")
+
+        // do {
+        //     try cmdSet.cardVerifyPIN(pin: pinBytes)
+        // } catch let error {
+        //     log.warning("Error: \(error)", tag:"CardState.testSatochip")
+        // }
+
+
+        // More tests to go here
+        
+        log.info("End Satochip tests", tag: "CardState.testSatochip")
+
     }
     
     // MARK: ON DISCONNECTION

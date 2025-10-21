@@ -12,9 +12,17 @@
 		0D62EC822BD7B27B004E8CFA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D62EC812BD7B27B004E8CFA /* Preview Assets.xcassets */; };
 		0D62EC8C2BD7B378004E8CFA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D62EC8B2BD7B378004E8CFA /* HomeView.swift */; };
 		0D62EC8E2BD7B3FC004E8CFA /* CardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D62EC8D2BD7B3FC004E8CFA /* CardState.swift */; };
-		0D62EC912BD7B42F004E8CFA /* SatochipSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0D62EC902BD7B42F004E8CFA /* SatochipSwift */; };
 		0D62EC932BD7B475004E8CFA /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D62EC922BD7B475004E8CFA /* ScanButton.swift */; };
 		0D62EC952BD7B586004E8CFA /* LoggerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D62EC942BD7B586004E8CFA /* LoggerService.swift */; };
+		0D62ED002BD7C000004E8CFA /* Outfit-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D62ED082BD7C000004E8CFA /* Outfit-VariableFont_wght.ttf */; };
+		0D62ED012BD7C000004E8CFA /* OpenSans-VariableFont_wdth,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D62ED092BD7C000004E8CFA /* OpenSans-VariableFont_wdth,wght.ttf */; };
+		0D62ED022BD7C000004E8CFA /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D62ED0A2BD7C000004E8CFA /* Poppins-Bold.ttf */; };
+		0D62ED032BD7C000004E8CFA /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D62ED0B2BD7C000004E8CFA /* Poppins-ExtraBold.ttf */; };
+		0D62ED042BD7C000004E8CFA /* Outfit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D62ED0C2BD7C000004E8CFA /* Outfit-Bold.ttf */; };
+		0D62ED052BD7C000004E8CFA /* Outfit-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D62ED0D2BD7C000004E8CFA /* Outfit-ExtraLight.ttf */; };
+		0D62ED062BD7C000004E8CFA /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D62ED0E2BD7C000004E8CFA /* OpenSans-SemiBold.ttf */; };
+		0D62ED072BD7C000004E8CFA /* Outfit-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D62ED0F2BD7C000004E8CFA /* Outfit-Regular.ttf */; };
+		9D9C393A2EA826B4000AE0A5 /* SatochipSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9D9C39392EA826B4000AE0A5 /* SatochipSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +36,14 @@
 		0D62EC8D2BD7B3FC004E8CFA /* CardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardState.swift; sourceTree = "<group>"; };
 		0D62EC922BD7B475004E8CFA /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
 		0D62EC942BD7B586004E8CFA /* LoggerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerService.swift; sourceTree = "<group>"; };
+		0D62ED082BD7C000004E8CFA /* Outfit-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		0D62ED092BD7C000004E8CFA /* OpenSans-VariableFont_wdth,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-VariableFont_wdth,wght.ttf"; sourceTree = "<group>"; };
+		0D62ED0A2BD7C000004E8CFA /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		0D62ED0B2BD7C000004E8CFA /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		0D62ED0C2BD7C000004E8CFA /* Outfit-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Bold.ttf"; sourceTree = "<group>"; };
+		0D62ED0D2BD7C000004E8CFA /* Outfit-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-ExtraLight.ttf"; sourceTree = "<group>"; };
+		0D62ED0E2BD7C000004E8CFA /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		0D62ED0F2BD7C000004E8CFA /* Outfit-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D62EC912BD7B42F004E8CFA /* SatochipSwift in Frameworks */,
+				9D9C393A2EA826B4000AE0A5 /* SatochipSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +86,7 @@
 				0D62EC7E2BD7B27B004E8CFA /* Assets.xcassets */,
 				0D62EC802BD7B27B004E8CFA /* Preview Content */,
 				0D62EC892BD7B2F2004E8CFA /* Info.plist */,
+				0D62ED102BD7C000004E8CFA /* Fonts */,
 			);
 			path = TestSatochip;
 			sourceTree = "<group>";
@@ -80,6 +97,21 @@
 				0D62EC812BD7B27B004E8CFA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0D62ED102BD7C000004E8CFA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0D62ED082BD7C000004E8CFA /* Outfit-VariableFont_wght.ttf */,
+				0D62ED092BD7C000004E8CFA /* OpenSans-VariableFont_wdth,wght.ttf */,
+				0D62ED0A2BD7C000004E8CFA /* Poppins-Bold.ttf */,
+				0D62ED0B2BD7C000004E8CFA /* Poppins-ExtraBold.ttf */,
+				0D62ED0C2BD7C000004E8CFA /* Outfit-Bold.ttf */,
+				0D62ED0D2BD7C000004E8CFA /* Outfit-ExtraLight.ttf */,
+				0D62ED0E2BD7C000004E8CFA /* OpenSans-SemiBold.ttf */,
+				0D62ED0F2BD7C000004E8CFA /* Outfit-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,7 +131,7 @@
 			);
 			name = TestSatochip;
 			packageProductDependencies = (
-				0D62EC902BD7B42F004E8CFA /* SatochipSwift */,
+				9D9C39392EA826B4000AE0A5 /* SatochipSwift */,
 			);
 			productName = TestSatochip;
 			productReference = 0D62EC772BD7B278004E8CFA /* TestSatochip.app */;
@@ -130,7 +162,7 @@
 			);
 			mainGroup = 0D62EC6E2BD7B278004E8CFA;
 			packageReferences = (
-				0D62EC8F2BD7B42F004E8CFA /* XCLocalSwiftPackageReference "../../github/SatochipSwift" */,
+				9D9C39382EA826B4000AE0A5 /* XCLocalSwiftPackageReference "../SatochipSwift" */,
 			);
 			productRefGroup = 0D62EC782BD7B278004E8CFA /* Products */;
 			projectDirPath = "";
@@ -148,6 +180,14 @@
 			files = (
 				0D62EC822BD7B27B004E8CFA /* Preview Assets.xcassets in Resources */,
 				0D62EC7F2BD7B27B004E8CFA /* Assets.xcassets in Resources */,
+				0D62ED002BD7C000004E8CFA /* Outfit-VariableFont_wght.ttf in Resources */,
+				0D62ED012BD7C000004E8CFA /* OpenSans-VariableFont_wdth,wght.ttf in Resources */,
+				0D62ED022BD7C000004E8CFA /* Poppins-Bold.ttf in Resources */,
+				0D62ED032BD7C000004E8CFA /* Poppins-ExtraBold.ttf in Resources */,
+				0D62ED042BD7C000004E8CFA /* Outfit-Bold.ttf in Resources */,
+				0D62ED052BD7C000004E8CFA /* Outfit-ExtraLight.ttf in Resources */,
+				0D62ED062BD7C000004E8CFA /* OpenSans-SemiBold.ttf in Resources */,
+				0D62ED072BD7C000004E8CFA /* Outfit-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,16 +337,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestSatochip/Preview Content\"";
-				DEVELOPMENT_TEAM = F75Z9LY9DQ;
+				DEVELOPMENT_TEAM = Z549D9UUA8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestSatochip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TestSatochip;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NFCReaderUsageDescription = "NFC used to scan Satochip card";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -315,7 +353,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.satochip.app.TestSatochip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gammastream.app.TestSatochip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -335,16 +373,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TestSatochip/Preview Content\"";
-				DEVELOPMENT_TEAM = F75Z9LY9DQ;
+				DEVELOPMENT_TEAM = Z549D9UUA8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestSatochip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TestSatochip;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NFCReaderUsageDescription = "NFC used to scan Satochip card";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -353,7 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.satochip.app.TestSatochip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gammastream.app.TestSatochip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -388,14 +424,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		0D62EC8F2BD7B42F004E8CFA /* XCLocalSwiftPackageReference "../../github/SatochipSwift" */ = {
+		9D9C39382EA826B4000AE0A5 /* XCLocalSwiftPackageReference "../SatochipSwift" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../github/SatochipSwift;
+			relativePath = ../SatochipSwift;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0D62EC902BD7B42F004E8CFA /* SatochipSwift */ = {
+		9D9C39392EA826B4000AE0A5 /* SatochipSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SatochipSwift;
 		};

@@ -1,4 +1,5 @@
 {
+  "originHash" : "f52c3990acbae92844d9b0ed84df69f8b9b2cdabb7d7f4ee0591d1dad106ba91",
   "pins" : [
     {
       "identity" : "bigint",
@@ -28,21 +29,30 @@
       }
     },
     {
-      "identity" : "secp256k1.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/GigaBitcoin/secp256k1.swift.git",
-      "state" : {
-        "revision" : "347b84ed2aad2305a7233f2a48d76f41e52062a1",
-        "version" : "0.16.0"
-      }
-    },
-    {
       "identity" : "swift-crypto",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-crypto.git",
       "state" : {
         "revision" : "60f13f60c4d093691934dc6cfdf5f508ada1f894",
         "version" : "2.6.0"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
+        "version" : "1.6.4"
+      }
+    },
+    {
+      "identity" : "swift-secp256k1",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/21-DOT-DEV/swift-secp256k1.git",
+      "state" : {
+        "revision" : "8c62aba8a3011c9bcea232e5ee007fb0b34a15e2",
+        "version" : "0.21.1"
       }
     },
     {
@@ -64,5 +74,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
