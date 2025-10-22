@@ -69,7 +69,7 @@ class CardState: ObservableObject {
         let parser = SatocardParser()
         
         do {
-            var (rapdu, cardType) = try cmdSet.selectApplet(cardType: CardType.anycard)
+          var (rapdu, cardType) = try cmdSet.selectApplet(cardType: CardType.satochip)
             let statusApdu = try cmdSet.cardGetStatus()
             cardStatus = try CardStatus(rapdu: statusApdu)
             log.info("cardStatus: \(cardStatus)", tag: "CardState.onConnection")
@@ -970,7 +970,7 @@ class CardState: ObservableObject {
         
         do {
             // Test PIN verification for Satochip card
-            let pinString = "123456"
+            let pinString = "qqqq"
             let pinBytes = Array(pinString.utf8)
             
             log.info("Testing PIN verification with PIN: \(pinString)", tag: "CardState.testSatochip")

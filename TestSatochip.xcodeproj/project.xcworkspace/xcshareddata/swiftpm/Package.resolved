@@ -1,4 +1,5 @@
 {
+  "originHash" : "f52c3990acbae92844d9b0ed84df69f8b9b2cdabb7d7f4ee0591d1dad106ba91",
   "pins" : [
     {
       "identity" : "bigint",
@@ -10,12 +11,12 @@
       }
     },
     {
-      "identity" : "cryptoswift",
+      "identity" : "cryptoswiftwrapper",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
+      "location" : "https://github.com/anquii/CryptoSwiftWrapper.git",
       "state" : {
-        "revision" : "3a2acbb32ab68215ee1596ee6004da8e90c3721b",
-        "version" : "1.0.0"
+        "revision" : "0d57e806de368b5d2364fabb7c789b48661ec90c",
+        "version" : "1.4.3"
       }
     },
     {
@@ -64,5 +65,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

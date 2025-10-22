@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,10 @@
 		0D62EC942BD7B586004E8CFA /* LoggerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		9D0420E32EA93AA3009B184B /* Fonts */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fonts; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		0D62EC742BD7B278004E8CFA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -47,6 +51,7 @@
 			children = (
 				0D62EC792BD7B278004E8CFA /* TestSatochip */,
 				0D62EC782BD7B278004E8CFA /* Products */,
+				9D0420E32EA93AA3009B184B /* Fonts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +101,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				9D0420E32EA93AA3009B184B /* Fonts */,
 			);
 			name = TestSatochip;
 			packageProductDependencies = (
@@ -386,7 +394,7 @@
 /* Begin XCLocalSwiftPackageReference section */
 		0D62EC8F2BD7B42F004E8CFA /* XCLocalSwiftPackageReference "../../github/SatochipSwift" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../github/SatochipSwift;
+			relativePath = ../SatochipSwift;
 		};
 /* End XCLocalSwiftPackageReference section */
 
