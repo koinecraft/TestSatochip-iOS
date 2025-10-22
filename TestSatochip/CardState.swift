@@ -977,7 +977,7 @@ class CardState: ObservableObject {
             log.info("Testing PIN verification with PIN: \(pinString)", tag: "CardState.testSatochip")
             
             // Verify PIN
-            try cmdSet.cardVerifyPIN(pin: pinBytes)
+            _ = try cmdSet.cardVerifyPIN(pin: pinBytes)
             log.info("PIN verification successful", tag: "CardState.testSatochip")
             
             // Update test counters
@@ -1060,6 +1060,27 @@ class CardState: ObservableObject {
             print("JSON:")
             print(jsonString)
             print("========================")
+            
+            // Create 32-byte transaction hash from the Nostr event JSON
+            let transactionHash = jsonString.data(using: .utf8)?.sha256() ?? Data()
+            let transactionHashHex = transactionHash.toHexString()
+            
+            log.info("Transaction hash created: \(transactionHashHex) (length: \(transactionHashHex.count))", tag: "CardState.testSignNostrEvent")
+            print("=== TRANSACTION HASH ===")
+            print("Hash: \(transactionHashHex)")
+            print("Length: \(transactionHash.count) bytes")
+            print("========================")
+            
+            // Sign the transaction hash using the Satochip card with key slot 0
+            log.info("Signing transaction hash with Satochip card using key slot 0...", tag: "CardState.testSignNostrEvent")
+            let signature = try cmdSet.cardSignTransactionHash(keynbr: 0, txhash: Array(transactionHash), chalresponse: nil)
+            
+            log.info("Transaction signed successfully with key slot 0", tag: "CardState.testSignNostrEvent")
+            print("=== SIGNATURE ===")
+            print("Key Slot: 0")
+            print("Signature: \(signature)")
+            print("Length: \(signature.count) bytes")
+            print("=================")
             
             // Update test counters
             nbTestTotal += 1
@@ -1148,5 +1169,12 @@ extension Data {
     
     func toHexString() -> String {
         return map { String(format: "%02hhx", $0) }.joined()
+    }
+}
+
+// MARK: - String Extensions
+extension String {
+    func sha256() -> Data {
+        return self.data(using: .utf8)?.sha256() ?? Data()
     }
 }
