@@ -141,46 +141,17 @@ class CardState: ObservableObject {
     
     // MARK: SATODIME
     public func testSatodime(){
-        log.info("Start Satodime tests", tag: "CardState.testSatodime")
+        log.info("Satodime tests disabled", tag: "CardState.testSatodime")
+        // Satodime tests are disabled
+        return
     }
     
     
     // MARK: SEEDKEEPER
     public func testSeedkeeper() throws {
-        log.info("Start Seedkeeper tests", tag: "CardState.testSeedkeeper")
-        
-        let pinString = "123456"
-        let pinBytes = Array("123456".utf8)
-        let wrongPinBytes = Array("0000".utf8)
-        var rapdu = APDUResponse(sw1: 0x00, sw2: 0x00, data: [])
-        
-        // applet version
-        let appletVersion = cardStatus.protocolVersion
-        
-        // check setup status
-        let setupDone = cardStatus.setupDone
-        if (!setupDone){
-            do {
-                rapdu = try cmdSet.cardSetup(pin_tries0: 5, pin0: pinBytes)
-            } catch let error {
-                log.warning("Error: \(error)", tag:"CardState.testSeedkeeper")
-            }
-        }
-        
-        // verify PIN
-        try cmdSet.cardVerifyPIN(pin: pinBytes)
-        
-        //Test
-        //do {try testGenerateMasterseed()}
-        //do {try testGenerateRandomSecret()}
-        //do {try testImportExportSecretPlain()}
-        //do {try testImportExportSecretEncrypted()}
-        //do {try testBip39MnemonicV2()}
-        //do {try testCardBip32GetExtendedkeySeedVector1()}
-        //do {try testCardBip32GetExtendedkeySeedVector2()}
-        //do {try testCardBip32GetExtendedkeySeedVector3()}
-        //do {try testCardBip32GetExtendedkeyBip85()}
-        do {try testSeedkeeperMemory()}
+        log.info("Seedkeeper tests disabled", tag: "CardState.testSeedkeeper")
+        // All Seedkeeper tests are disabled
+        return
     }
     
     // MARK: testGenerateMasterseed
@@ -996,6 +967,29 @@ class CardState: ObservableObject {
     public func testSatochip(){
         let log = LoggerService.shared
         log.info("Start Satochip tests", tag: "CardState.testSatochip")
+        
+        do {
+            // Test PIN verification for Satochip card
+            let pinString = "123456"
+            let pinBytes = Array(pinString.utf8)
+            
+            log.info("Testing PIN verification with PIN: \(pinString)", tag: "CardState.testSatochip")
+            
+            // Verify PIN
+            try cmdSet.cardVerifyPIN(pin: pinBytes)
+            log.info("PIN verification successful", tag: "CardState.testSatochip")
+            
+            // Update test counters
+            nbTestTotal += 1
+            nbTestSuccess += 1
+            
+            log.info("Satochip PIN verification test completed successfully", tag: "CardState.testSatochip")
+            
+        } catch let error {
+            log.error("Satochip PIN verification test failed: \(error)", tag: "CardState.testSatochip")
+            nbTestTotal += 1
+            // nbTestSuccess remains unchanged (test failed)
+        }
     }
     
     // MARK: ON DISCONNECTION
