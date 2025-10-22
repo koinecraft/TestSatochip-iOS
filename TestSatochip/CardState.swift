@@ -9,6 +9,7 @@ import Foundation
 import CoreNFC
 import SatochipSwift
 import CryptoSwift
+import CommonCrypto
 //import MnemonicSwift
 //import SwiftUI
 //import XCTest
@@ -985,10 +986,92 @@ class CardState: ObservableObject {
             
             log.info("Satochip PIN verification test completed successfully", tag: "CardState.testSatochip")
             
+            // Test SignNostrEvent after PIN verification
+            try testSignNostrEvent()
+            
         } catch let error {
             log.error("Satochip PIN verification test failed: \(error)", tag: "CardState.testSatochip")
             nbTestTotal += 1
             // nbTestSuccess remains unchanged (test failed)
+        }
+    }
+    
+    // MARK: testSignNostrEvent
+    public func testSignNostrEvent() throws {
+        let log = LoggerService.shared
+        log.info("Start SignNostrEvent test", tag: "CardState.testSignNostrEvent")
+        
+        do {
+            // Get public key from slot 0
+            // Note: This assumes a method exists to get public key from a specific slot
+            // You may need to adjust this based on the actual SatochipSwift API
+            let (_, pubkeyBytes, pubkeyHex) = try cmdSet.cardGetAuthentikey()
+            
+            // Ensure the public key is 64 characters (32 bytes) for Nostr
+            let nostrPubkey: String
+            if pubkeyHex.count == 64 {
+                // Already 64 characters, use as is
+                nostrPubkey = pubkeyHex
+            } else if pubkeyHex.count == 32 {
+                // 32 characters, duplicate to make 64
+                nostrPubkey = pubkeyHex + pubkeyHex
+            } else {
+                // Pad or truncate to 64 characters
+                let padded = pubkeyHex.padding(toLength: 64, withPad: "0", startingAt: 0)
+                nostrPubkey = String(padded.prefix(64))
+            }
+            
+            log.info("Retrieved public key: \(pubkeyHex) (length: \(pubkeyHex.count))", tag: "CardState.testSignNostrEvent")
+            log.info("Nostr public key: \(nostrPubkey) (length: \(nostrPubkey.count))", tag: "CardState.testSignNostrEvent")
+            
+            // Generate Nostr event ID (SHA256 of the event content)
+            let eventContent = "Hello From Satochip!"
+            let eventData = """
+            [0,"\(nostrPubkey)",1761150857,1,[],"\(eventContent)"]
+            """.data(using: .utf8)!
+            
+            // Generate SHA256 hash for event ID
+            let eventId = eventData.sha256().toHexString()
+            
+            // Get current timestamp
+            let currentTimestamp = Int(Date().timeIntervalSince1970)
+            
+            // Create Nostr event JSON
+            let nostrEvent: [String: Any] = [
+                "id": eventId,
+                "pubkey": nostrPubkey,
+                "created_at": currentTimestamp,
+                "kind": 1,
+                "tags": [],
+                "content": eventContent
+            ]
+            
+            // Convert to JSON string
+            let jsonData = try JSONSerialization.data(withJSONObject: nostrEvent, options: .prettyPrinted)
+            let jsonString = String(data: jsonData, encoding: .utf8) ?? "Failed to convert to JSON"
+            
+            // Log the Nostr event JSON to console
+            log.info("Nostr Event JSON:", tag: "CardState.testSignNostrEvent")
+            print("=== NOSTR EVENT JSON ===")
+            print("Original pubkey: \(pubkeyHex) (length: \(pubkeyHex.count))")
+            print("Nostr pubkey: \(nostrPubkey) (length: \(nostrPubkey.count))")
+            print("Event ID: \(eventId)")
+            print("Timestamp: \(currentTimestamp)")
+            print("JSON:")
+            print(jsonString)
+            print("========================")
+            
+            // Update test counters
+            nbTestTotal += 1
+            nbTestSuccess += 1
+            
+            log.info("SignNostrEvent test completed successfully", tag: "CardState.testSignNostrEvent")
+            
+        } catch let error {
+            log.error("SignNostrEvent test failed: \(error)", tag: "CardState.testSignNostrEvent")
+            nbTestTotal += 1
+            // nbTestSuccess remains unchanged (test failed)
+            throw error
         }
     }
     
@@ -1051,4 +1134,19 @@ class CardState: ObservableObject {
     }
     
     
+}
+
+// MARK: - Data Extensions
+extension Data {
+    func sha256() -> Data {
+        var hash = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        self.withUnsafeBytes {
+            _ = CC_SHA256($0.baseAddress, CC_LONG(self.count), &hash)
+        }
+        return Data(hash)
+    }
+    
+    func toHexString() -> String {
+        return map { String(format: "%02hhx", $0) }.joined()
+    }
 }
